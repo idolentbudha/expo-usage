@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { ErrorBoundary } from "./src/components";
 import AppUpdate from "./src/components/appupdate";
 import { useOTAUpdate } from "./src/hooks";
 
@@ -12,7 +13,7 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <ErrorBoundary>
       <StatusBar style="auto" />
       <View style={styles.container}>
         <AppUpdate isLoading={updatingState}>
@@ -21,7 +22,7 @@ export default function App() {
           </View>
         </AppUpdate>
       </View>
-    </>
+    </ErrorBoundary>
   );
 }
 
